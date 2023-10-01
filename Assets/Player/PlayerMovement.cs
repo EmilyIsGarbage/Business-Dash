@@ -8,22 +8,33 @@ public class PlayerMovement : MonoBehaviour
 
     private Rigidbody2D body;
     private Vector2 axisMovement;
+    public GameObject TopRightLimitGameObject;
+    public GameObject BottomLeftLimitGameObject;
+
+    private Vector3 TopRightLimit;
+    private Vector3 BottomLeftLimit;
+   
     // Start is called before the first frame update
     void Start()
     {
          body = GetComponent<Rigidbody2D>();
+        TopRightLimit = TopRightLimitGameObject.transform.position;
+        BottomLeftLimit = BottomLeftLimitGameObject.transform.position;
     }
 
     // Update is called once per frame
     void Update()
     {
+       
         axisMovement.x = Input.GetAxisRaw("Horizontal");
         axisMovement.y = Input.GetAxisRaw("Vertical");
+        
     }
 
     private void FixedUpdate()
     {
         Move();
+
     }
 private void Move()
     {
